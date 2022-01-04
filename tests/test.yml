@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  remote_user: root
+  become: true
+  vars:
+    ansible_connection: local
+  roles:
+    - install_docker
+    - wordpress_role

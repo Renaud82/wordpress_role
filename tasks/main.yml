@@ -1,0 +1,41 @@
+- name: Create a network
+  docker_network:
+    name: "{{ docker_network_name }}"
+
+- name: "Remove directory"
+  file:
+    path: "{{ bdd_volume }}"
+    state: absent
+
+- name: "Create directory for mysql persistente volume"
+  file:
+    path: "{{ bdd_volume }}"
+    state: directory
+
+- name: "Deploy mysql container"
+  docker_container:
+    name: "{{ mysql_container_name }}"
+    image: mysql
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ root_pwd }}"
+      MYSQL_USER: "{{ user_name }}"
+      MYSQL_PASSWORD: "{{ user_pwd }}"
+      MYSQL_DATABASE: "{{ bdd_name }}"
+    volumes:
+      - "{{ bdd_volume }}:/var/lib/mysql"
+    networks:
+      - name: "{{ docker_network_name }}"
+
+- name: "Deploy wordpress container"
+  docker_container:
+    name: "{{ wordpress_container_name }}"
+    image: wordpress
+    env:
+      WORDPRESS_DB_HOST: "{{ mysql_container_name }}"
+      WORDPRESS_DB_USER: "{{ user_name }}"
+      WORDPRESS_DB_PASSWORD: "{{ user_pwd }}"
+      WORDPRESS_DB_NAME: "{{ bdd_name }}"
+    ports:
+      - "{{ extrenal_port }}:80"
+    networks:
+      - name: "{{ docker_network_name }}"

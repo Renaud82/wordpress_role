@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  role_name: wolrdpress_role
+  author: Renaud
+  description: Ansible wordpress role
+  company: Renaud

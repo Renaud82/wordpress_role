@@ -1,0 +1,14 @@
+---
+administrator: Renaud
+#bdd parameters
+bdd_name: sql_bdd
+user_name: ubuntu
+user_pwd: unbuntu
+root_pwd: rootpwd
+#Docker parameters
+docker_network_name: wordpressnet
+wordpress_container_name: wordpress
+mysql_container_name: mysql
+extrenal_port: 8600
+#Persistente volume to save BDD
+bdd_volume: "/tmp/mysql/"
