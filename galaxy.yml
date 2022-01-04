@@ -1,0 +1,15 @@
+---
+namespace: community
+name: worpress-role
+version: 1.0.0
+readme: README.md
+authors:
+  - Renaud SAUTOUR
+description: Install wordpress
+license_file: COPYING
+tags:
+  - v1
+repository: https://github.com/Renaud82/worpress_role.git
+documentation: https://github.com/Renaud82/worpress_role.git
+homepage: https://github.com/Renaud82/worpress_role.git
+issues: https://github.com/Renaud82/worpress_role.git
