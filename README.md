@@ -1,5 +1,6 @@
 Ansible Role:  Wordpress for training
 =========
+![CI](icones/icone.jpeg)
 
 An Ansible Role that deploy Wordpress and MySQL on Linux.
 
