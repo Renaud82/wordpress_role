@@ -1,6 +1,7 @@
+![CI](icones/icone.jpeg)
+
 Ansible Role:  Wordpress for training
 =========
-![CI](icones/icone.jpeg)
 
 An Ansible Role that deploy Wordpress and MySQL on Linux.
 
@@ -42,6 +43,7 @@ None
 Example Playbook
 ----------------
 
+```yaml
 - hosts: client
   become: true
   vars_files:
@@ -50,7 +52,7 @@ Example Playbook
   roles:
     - install_docker
     - wordpress_role
-
+```
 
 Author Information
 ------------------
