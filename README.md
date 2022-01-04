@@ -1,38 +1,57 @@
-Role Name
+Ansible Role:  Wordpress for training
 =========
 
-A brief description of the role goes here.
+An Ansible Role that deploy Wordpress and MySQL on Linux.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Environments: Linux
+Requires: 
+ - Docker
+ - Python-pip
+ - Ansible Docker Container (docker-py)
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+BDD parameters to manage the database:
+
+    bdd_name: sql_bdd
+    user_name: ubuntu
+    user_pwd: unbuntu
+    root_pwd: rootpwd
+    
+Docker parameters to manage name and external port:
+
+    docker_network_name: wordpressnet
+    wordpress_container_name: wordpress
+    mysql_container_name: mysql
+    extrenal_port: 8600
+    
+Choose the persistente volume to save BDD
+
+    bdd_volume: "/tmp/mysql/"
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+- hosts: client
+  become: true
+  vars_files:
+    - files/secrets/credentials.yml
+    - files/parameters.yml
+  roles:
+    - install_docker
+    - wordpress_role
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created in 2022 by Renaud SAUTOUR
