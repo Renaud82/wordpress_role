@@ -50,8 +50,8 @@ Example Playbook
     - files/secrets/credentials.yml
     - files/parameters.yml
   roles:
-    - install_docker
-    - wordpress_role
+    - renaud82.install_docker
+    - renaud82.wordpress_role
 ```
 
 Author Information
